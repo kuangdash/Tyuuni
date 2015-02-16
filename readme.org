@@ -22,3 +22,8 @@
 羡却人间花月意，
 慕此花香与月阴。
 #+end_verse
+
+* 代码
+#+BEGIN_SRC emacs-lisp
+(message "hello world")
+#+END_SRC
