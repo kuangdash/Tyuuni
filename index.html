@@ -1,36 +1,63 @@
 <html>
   <head>
+    <style>
+     body {
+       background:#003366;		color:#fff;
+       padding:0;				margin:0;
+       overflow:hidden;		font-family:georgia;
+       text-align:center;
+     }
+     a {	color: #ff0080;	text-decoration: none; }
+     a:hover { color: #0080ff; }
+
+     #a { position:absolute;	top:0; left:0;
+	  background:rgba(0,0,0,0.75); padding:1em;
+	  border-radius: 0 0 30px 0;
+	  -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,1) }
+     #b { position:absolute; top:0; right:0;
+	  background:rgba(0,0,0,0.75); padding:1em;
+	  border-radius: 0 0 0 30px;
+	  -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,1) }
+     #c { position:absolute; bottom:0; left:0;
+	  background:rgba(0,0,0,0.75); padding:1em;
+	  border-radius: 0 30px 0 0;
+	  -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,1) }
+     #d { position:absolute; bottom:0; right:0;
+	  background:rgba(0,0,0,0.75); padding:1em;
+	  border-radius: 30px 0 0 0;
+	  -webkit-box-shadow: 0px 0px 20px rgba(0,0,0,1) }
+    </style>
     <script type="text/javascript" src="./media/js/three.js"></script>
     <script>
      function init() {
-    // renderer
-    var renderer = new THREE.WebGLRenderer({
-        canvas: document.getElementById('mainCanvas')
-    });
-    renderer.setClearColor(0x000000); // black
+       // renderer
+       var renderer = new THREE.WebGLRenderer({
+         canvas: document.getElementById('mainCanvas')
+       });
 
-    // scene
-    var scene = new THREE.Scene();
+       // scene
+       var scene = new THREE.Scene();
 
-    // camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
-    camera.position.set(0, 0, 5);
-    scene.add(camera);
-
-    // a cube in the scene
-    var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 2, 3),
-            new THREE.MeshBasicMaterial({
-                color: 0xff0000
-            })
-    );
-    scene.add(cube);
-
-    // render
-    renderer.render(scene, camera);
+       //camera
+       var camera = new THREE.PerspectiveCamera(45, 400 / 300, 1, 10);
+       camera.position.set(4, -3, 5);
+       camera.lookAt(new THREE.Vector3(0, 0, 0));
+       scene.add(camera);
+       //cube
+       var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1, 2, 2, 2),
+                                 new THREE.MeshBasicMaterial({
+                                   color: 0xff0000,
+                                   wireframe: true
+                                 })
+       );
+       scene.add(cube);
+       // render
+       renderer.render(scene, camera);
      }
     </script>
-</head>
-<body onload="init()">
-    <canvas id="mainCanvas" width="400px" height="300px" ></canvas>
-</body>
+  </head>
+  <body onload="init()">
+    <canvas id="mainCanvas" width="800px" height="600px" ></canvas>
+    <p>材质</p>
+  </body>
 </html>
